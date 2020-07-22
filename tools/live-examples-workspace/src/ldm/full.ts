@@ -2116,8 +2116,8 @@ export const Insights = {
      */ $TotalSalesByLocation: "aaBN5UG3dXu4",
     /**
      * Insight Title: Sales over Time
-     * Insight ID: acFJltTsifSQ
-     */ SalesOverTime: "acFJltTsifSQ",
+     * Insight ID: aaVc3E8FfdN4
+     */ SalesOverTime: "aaVc3E8FfdN4",
     /**
      * Insight Title: Costs over Time
      * Insight ID: abHJmzD1fZrW

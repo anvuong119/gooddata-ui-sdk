@@ -9,7 +9,7 @@ const backendShortcuts: any = {
     developer: "https://developer.na.gooddata.com",
 };
 
-const defaultBackend = backendShortcuts.stg3;
+const defaultBackend = backendShortcuts.stg2;
 
 const backendParam = process.env.backend || "";
 

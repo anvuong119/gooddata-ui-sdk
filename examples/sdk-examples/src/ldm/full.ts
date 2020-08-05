@@ -1680,8 +1680,8 @@ export const Insights = {
      */ ChartNr1: "admoLzGrddbk",
     /**
      * Insight Title: geoPushpinChart
-     * Insight ID: acebcI3fhaRI
-     */ GeoPushpinChart: "acebcI3fhaRI",
+     * Insight ID: aapUO34qhB6P
+     */ GeoPushpinChart: "aapUO34qhB6P",
     /**
      * Insight Title: Bullet Chart
      * Insight ID: aaQxY4PLbBsQ

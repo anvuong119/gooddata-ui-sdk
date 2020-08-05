@@ -3,8 +3,8 @@ import { BACKEND_URL } from "./env";
 
 const demoProject: { [domain: string]: string } = {
     "https://secure.gooddata.com": "k26dtejorcqlqf11crn6imbeevp2q4kg",
-    "https://staging3.intgdc.com": "kytra720hke4d84e8ozohoz7uycn53mi",
-    "https://staging2.intgdc.com": "ws7pxsamkx8o0t1s7kfvkj5o41uwcmqg",
+    "https://staging3.intgdc.com": "jj0m1fje2qlu3v2q87t1btmq9g8mv43w",
+    "https://staging2.intgdc.com": "cxmrlinh0gcspntxsytkwcky7gkay4so",
     "https://staging.intgdc.com": "na1q8a0q4efb7cajbgre9mmm776dr1yv",
     "https://developer.na.gooddata.com": "xms7ga4tf3g3nzucd8380o2bev8oeknp",
 };

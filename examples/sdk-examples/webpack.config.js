@@ -21,11 +21,11 @@ const backendShortcuts = {
     developer: "https://developer.na.gooddata.com",
 };
 
-const defaultBackend = backendShortcuts.developer;
+const defaultBackend = backendShortcuts.stg2;
 
 function SimplestProgressPlugin() {
     let lastPercent = -10;
-    return new webpack.ProgressPlugin(percent => {
+    return new webpack.ProgressPlugin((percent) => {
         const percentInt = Math.ceil(percent * 100);
         if (percentInt >= lastPercent + 5) {
             lastPercent = percentInt;
@@ -60,7 +60,7 @@ module.exports = async (env, argv) => {
         "/api": {
             target: "http://localhost:3009",
             secure: false,
-            onProxyReq: req => {
+            onProxyReq: (req) => {
                 console.log("proxy", "/gdc", req.path); // eslint-disable-line no-console
                 if (req.method === "DELETE" && !req.getHeader("content-length")) {
                     // Only set content-length to zero if not already specified
@@ -130,7 +130,7 @@ module.exports = async (env, argv) => {
                 },
                 {
                     test: /\.js?$/,
-                    include: rawModulePath => {
+                    include: (rawModulePath) => {
                         // Some npm modules no longer transpiled to ES5, which
                         // causes errors such in IE11.
                         const inclusionReg = /node_modules\/.*((lru-cache)|(react-intl)|(intl-messageformat))/;

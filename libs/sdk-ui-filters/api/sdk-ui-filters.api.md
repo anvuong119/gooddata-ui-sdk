@@ -114,10 +114,26 @@ export interface IAttributeFilterProps {
     workspace?: string;
 }
 
+// @beta
+export interface IDateFilterAlignPointOffset {
+    // (undocumented)
+    x: number;
+    // (undocumented)
+    y: number;
+}
+
+// @beta
+export interface IDateFilterAlignPointProps {
+    // (undocumented)
+    align: string;
+    // (undocumented)
+    offset?: IDateFilterAlignPointOffset;
+}
+
 // @beta (undocumented)
 export interface IDateFilterCallbackProps {
     // (undocumented)
-    onApply: (dateFilterOption: DateFilterOption, excludeCurrentPeriod: boolean) => void;
+    onApply: (dateFilterOption: DateFilterOption, excludeCurrentPeriod: boolean, props: any) => void;
     // (undocumented)
     onCancel?: () => void;
     // (undocumented)
@@ -138,7 +154,11 @@ export interface IDateFilterOptionsByType {
 // @beta (undocumented)
 export interface IDateFilterOwnProps extends IDateFilterStatePropsIntersection {
     // (undocumented)
+    alignPoints?: IDateFilterAlignPointProps[];
+    // (undocumented)
     availableGranularities: DateFilterGranularity[];
+    // (undocumented)
+    closeOnParentScroll?: boolean;
     // (undocumented)
     customFilterName?: string;
     // (undocumented)

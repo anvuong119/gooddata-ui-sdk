@@ -11,7 +11,7 @@ import { canExcludeCurrentPeriod } from "./utils/PeriodExlusion";
 
 import { DateFilterCore } from "./DateFilterCore";
 import { validateFilterOption } from "./validation/OptionValidation";
-import { DateFilterOption, IDateFilterOptionsByType } from "./interfaces";
+import { DateFilterOption, IDateFilterOptionsByType, IDateFilterAlignPointProps } from "./interfaces";
 
 const normalizeSelectedFilterOption = (selectedFilterOption: DateFilterOption): DateFilterOption => {
     if (
@@ -45,13 +45,15 @@ export interface IDateFilterOwnProps extends IDateFilterStatePropsIntersection {
     customFilterName?: string;
     dateFilterMode: DashboardDateFilterConfigMode;
     locale?: string;
+    alignPoints?: IDateFilterAlignPointProps[];
+    closeOnParentScroll?: boolean;
 }
 
 /**
  * @beta
  */
 export interface IDateFilterCallbackProps {
-    onApply: (dateFilterOption: DateFilterOption, excludeCurrentPeriod: boolean) => void;
+    onApply: (dateFilterOption: DateFilterOption, excludeCurrentPeriod: boolean, props: any) => void;
     onCancel?: () => void;
     onOpen?: () => void;
     onClose?: () => void;
@@ -140,6 +142,8 @@ export class DateFilter extends React.PureComponent<IDateFilterProps, IDateFilte
             availableGranularities,
             isEditMode,
             locale,
+            alignPoints,
+            closeOnParentScroll,
         } = this.props;
         const { excludeCurrentPeriod, selectedFilterOption, isExcludeCurrentPeriodEnabled } = this.state;
         return dateFilterMode === "hidden" ? null : (
@@ -154,6 +158,8 @@ export class DateFilter extends React.PureComponent<IDateFilterProps, IDateFilte
                 filterOptions={filterOptions}
                 selectedFilterOption={selectedFilterOption}
                 originalSelectedFilterOption={originalSelectedFilterOption}
+                alignPoints={alignPoints}
+                closeOnParentScroll={closeOnParentScroll}
                 locale={locale}
                 onApplyClick={this.handleApplyClick}
                 onCancelClick={this.onCancelClicked}
@@ -167,7 +173,7 @@ export class DateFilter extends React.PureComponent<IDateFilterProps, IDateFilte
 
     private handleApplyClick = () => {
         const normalizedSelectedFilterOption = normalizeSelectedFilterOption(this.state.selectedFilterOption);
-        this.props.onApply(normalizedSelectedFilterOption, this.state.excludeCurrentPeriod);
+        this.props.onApply(normalizedSelectedFilterOption, this.state.excludeCurrentPeriod, this.props);
     };
 
     private onChangesDiscarded = () => {

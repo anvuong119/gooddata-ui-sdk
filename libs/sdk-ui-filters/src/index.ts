@@ -22,6 +22,8 @@ export {
     isRelativeDateFilterOption,
     IUiAbsoluteDateFilterForm,
     IUiRelativeDateFilterForm,
+    IDateFilterAlignPointProps,
+    IDateFilterAlignPointOffset,
 } from "./DateFilter";
 export {
     MeasureValueFilter,

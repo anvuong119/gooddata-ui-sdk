@@ -136,3 +136,21 @@ export interface IExtendedDateFilterErrors {
         to?: string;
     };
 }
+
+/**
+ * Date filter align props
+ * @beta
+ */
+export interface IDateFilterAlignPointProps {
+    align: string;
+    offset?: IDateFilterAlignPointOffset;
+}
+
+/**
+ * Date filter align point offset
+ * @beta
+ */
+export interface IDateFilterAlignPointOffset {
+    x: number;
+    y: number;
+}

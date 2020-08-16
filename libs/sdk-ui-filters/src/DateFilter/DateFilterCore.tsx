@@ -3,7 +3,12 @@ import React from "react";
 import { DateFilterGranularity } from "@gooddata/sdk-backend-spi";
 import Dropdown from "@gooddata/goodstrap/lib/Dropdown/Dropdown";
 import MediaQuery from "react-responsive";
-import { IExtendedDateFilterErrors, IDateFilterOptionsByType, DateFilterOption } from "./interfaces";
+import {
+    IExtendedDateFilterErrors,
+    IDateFilterOptionsByType,
+    DateFilterOption,
+    IDateFilterAlignPointProps,
+} from "./interfaces";
 import { IntlWrapper } from "@gooddata/sdk-ui";
 import { MediaQueries } from "../constants";
 import { DateFilterButtonLocalized } from "./DateFilterButtonLocalized/DateFilterButtonLocalized";
@@ -40,6 +45,8 @@ export interface IDateFilterCoreProps {
     onDropdownOpenChanged: (isOpen: boolean) => void;
 
     errors?: IExtendedDateFilterErrors;
+    alignPoints?: IDateFilterAlignPointProps[];
+    closeOnParentScroll?: boolean;
 }
 
 const DropdownBody: React.FC<{
@@ -56,6 +63,8 @@ const DropdownBody: React.FC<{
 export const DateFilterCore: React.FC<IDateFilterCoreProps> = ({
     originalSelectedFilterOption,
     originalExcludeCurrentPeriod,
+    alignPoints,
+    closeOnParentScroll,
     onDropdownOpenChanged,
     customFilterName,
     disabled,
@@ -78,16 +87,22 @@ export const DateFilterCore: React.FC<IDateFilterCoreProps> = ({
                     );
                     return (
                         <Dropdown
-                            closeOnParentScroll={true}
+                            closeOnParentScroll={
+                                closeOnParentScroll === true || closeOnParentScroll === false
+                                    ? closeOnParentScroll
+                                    : true
+                            }
                             closeOnMouseDrag={true}
                             closeOnOutsideClick={true}
                             enableEventPropagation={true}
-                            alignPoints={[
-                                { align: "bl tl" },
-                                { align: "tr tl" },
-                                { align: "tr tl", offset: { x: 0, y: -100 } },
-                                { align: "tr tl", offset: { x: 0, y: -50 } },
-                            ]}
+                            alignPoints={
+                                alignPoints || [
+                                    { align: "bl tl" },
+                                    { align: "tr tl" },
+                                    { align: "tr tl", offset: { x: 0, y: -100 } },
+                                    { align: "tr tl", offset: { x: 0, y: -50 } },
+                                ]
+                            }
                             onOpenStateChanged={onDropdownOpenChanged}
                             disabled={disabled}
                             // Dropdown component passes "isOpen" prop automatically to the component in "button" prop

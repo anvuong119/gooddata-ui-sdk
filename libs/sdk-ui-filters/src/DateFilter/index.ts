@@ -55,6 +55,8 @@ export {
     isRelativeDateFilterOption,
     IUiAbsoluteDateFilterForm,
     IUiRelativeDateFilterForm,
+    IDateFilterAlignPointProps,
+    IDateFilterAlignPointOffset,
 } from "./interfaces";
 
 export { defaultDateFilterOptions } from "./constants/config";

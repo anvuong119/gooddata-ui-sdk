@@ -103,6 +103,11 @@ export namespace EmbeddedAnalyticalDesigner {
         SetFilterContext = "setFilterContext",
 
         /**
+         * The command to keep filter context in explore mode
+         */
+        KeepFilterContext = "keepFilterContext",
+
+        /**
          * The command to remove filter item from current filter context
          */
         RemoveFilterContext = "removeFilterContext",
@@ -656,6 +661,35 @@ export namespace EmbeddedAnalyticalDesigner {
     >;
 
     /**
+     * Data type of KeepFilterContext command
+     *
+     * @public
+     */
+    export type KeepFilterContextCommandData = IGdcAdMessageEnvelope<
+        GdcAdCommandType.KeepFilterContext,
+        EmbeddedGdc.IFilterContextContent
+    >;
+
+    /**
+     * Keep the filter context when the AD is displayed in explore mode.
+     *
+     * Contract:
+     * - if filters are same with filters on the AD filter bar, then update the filters on the filter bar
+     *   and apply the filters to insight
+     * - if filters are new, then add them to the AD filter bar and apply to insight
+     * - if a filter cannot be applied (for reasons like "Filter is not existed in the dataset" or "Filter is existed but wrong elements input data")
+     *   then it is ignored and the next filter is handled. No CommandFailed will be posted.
+     * - in-case the total number of filters (the sum of filters owned by the AD and the filters to be kept) exceeds the limit,
+     *   a CommandFailed will be posted and no filter to be kept is applied.
+     *
+     * @public
+     */
+    export type KeepFilterContextCommand = IGdcAdMessageEvent<
+        GdcAdCommandType.KeepFilterContext,
+        EmbeddedGdc.IFilterContextContent
+    >;
+
+    /**
      * Type-guard checking whether an object is an instance of {@link EmbeddedAnalyticalDesigner.SetFilterContextCommand}
      *
      * @param obj - object to test
@@ -664,6 +698,17 @@ export namespace EmbeddedAnalyticalDesigner {
      */
     export function isSetFilterContextCommandData(obj: unknown): obj is SetFilterContextCommandData {
         return getEventType(obj) === GdcAdCommandType.SetFilterContext;
+    }
+
+    /**
+     * Type-guard checking whether an object is an instance of {@link EmbeddedAnalyticalDesigner.KeepFilterContextCommand}
+     *
+     * @param obj - object to test
+     *
+     * @public
+     */
+    export function isKeepFilterContextCommandData(obj: unknown): obj is KeepFilterContextCommandData {
+        return getEventType(obj) === GdcAdCommandType.KeepFilterContext;
     }
 
     /**

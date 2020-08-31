@@ -37,6 +37,7 @@ export namespace EmbeddedAnalyticalDesigner {
         Clear = "clear",
         DrillableItems = "drillableItems",
         Export = "exportInsight",
+        KeepFilterContext = "keepFilterContext",
         OpenInsight = "openInsight",
         Redo = "redo",
         RemoveFilterContext = "removeFilterContext",
@@ -105,6 +106,7 @@ export namespace EmbeddedAnalyticalDesigner {
     export function isExportInsightCommandData(obj: unknown): obj is ExportInsightCommandData;
     export function isInsightOpenedData(obj: unknown): obj is InsightOpenedData;
     export function isInsightSavedData(obj: unknown): obj is InsightSavedData;
+    export function isKeepFilterContextCommandData(obj: unknown): obj is KeepFilterContextCommandData;
     export function isNewInsightInitializedData(obj: unknown): obj is NewInsightInitializedData;
     export function isOpenInsightCommandData(obj: unknown): obj is OpenInsightCommandData;
     export function isRedoCommandData(obj: unknown): obj is RedoCommandData;
@@ -115,6 +117,8 @@ export namespace EmbeddedAnalyticalDesigner {
     export function isSetFilterContextCommandData(obj: unknown): obj is SetFilterContextCommandData;
     export function isUndoCommandData(obj: unknown): obj is UndoCommandData;
     export function isUndoFinishedData(obj: unknown): obj is UndoFinishedData;
+    export type KeepFilterContextCommand = IGdcAdMessageEvent<GdcAdCommandType.KeepFilterContext, EmbeddedGdc.IFilterContextContent>;
+    export type KeepFilterContextCommandData = IGdcAdMessageEnvelope<GdcAdCommandType.KeepFilterContext, EmbeddedGdc.IFilterContextContent>;
     export type NewInsightInitialized = IGdcAdMessageEvent<GdcAdEventType.NewInsightInitialized, NewInsightInitializedBody>;
     export type NewInsightInitializedBody = IAvailableCommands;
     export type NewInsightInitializedData = IGdcAdMessageEnvelope<GdcAdEventType.NewInsightInitialized, undefined>;

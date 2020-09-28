@@ -108,6 +108,11 @@ export interface IInsightViewProps extends Partial<IVisCallbacks> {
     locale?: ILocale;
 
     /**
+     * Format to be applied to the dates in an AFM execution response.
+     */
+    dateFormat?: string;
+
+    /**
      * Indicates that the execution to obtain the data for the insight should be an 'execution by reference'.
      *
      * Execution by reference means that the InsightView will ask analytical backend to compute results for an insight
@@ -158,6 +163,7 @@ class RenderInsightView extends React.Component<
     private settings: IWorkspaceSettings | undefined;
     private containerRef = React.createRef<HTMLDivElement>();
     private locale: string | undefined;
+    private dateFormat: string | undefined;
     private errorMap: IErrorDescriptors;
 
     public static defaultProps: Partial<IInsightViewProps & WrappedComponentProps> = {
@@ -217,6 +223,7 @@ class RenderInsightView extends React.Component<
 
         const visProps: IVisProps = {
             locale: this.getLocale(),
+            dateFormat: this.getDateFormat(),
             custom: {
                 drillableItems: this.props.drillableItems,
             },
@@ -246,6 +253,7 @@ class RenderInsightView extends React.Component<
 
         this.insight = await this.getInsight();
         this.locale = await this.getUserProfileLocale();
+        this.dateFormat = await this.getUserDateFormat();
 
         [this.insight, this.locale] = await Promise.all([this.getInsight(), this.getUserProfileLocale()]);
 
@@ -293,6 +301,10 @@ class RenderInsightView extends React.Component<
 
     private getLocale = () => {
         return (this.props.locale || this.locale || DefaultLocale) as ILocale;
+    };
+
+    private getDateFormat = () => {
+        return this.props.dateFormat || this.dateFormat || "MM/DD/YYYY";
     };
 
     private onExportReadyDecorator = (exportFunction: IExportFunction): void => {
@@ -367,6 +379,11 @@ class RenderInsightView extends React.Component<
 
     private getUserProfileLocale = (): Promise<string> => {
         return this.getRemoteResource((loader) => loader.getLocale(this.props.backend));
+    };
+
+    private getUserDateFormat = (): Promise<string> => {
+        // TODO: It's necessary to make a network request here to get the date format from Platform Settings
+        return Promise.resolve("YYYY-MM-DD");
     };
 
     private updateWorkspaceSettings = async () => {

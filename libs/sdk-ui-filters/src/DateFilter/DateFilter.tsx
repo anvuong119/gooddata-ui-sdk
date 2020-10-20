@@ -7,13 +7,12 @@ import {
     DateFilterGranularity,
     DashboardDateFilterConfigMode,
 } from "@gooddata/sdk-backend-spi";
+import { DEFAULT_DATE_FORMAT } from "@gooddata/sdk-model";
 import { canExcludeCurrentPeriod } from "./utils/PeriodExlusion";
 
 import { DateFilterCore } from "./DateFilterCore";
 import { validateFilterOption } from "./validation/OptionValidation";
 import { DateFilterOption, IDateFilterOptionsByType } from "./interfaces";
-
-export const DEFAULT_DATE_FORMAT = "MM/dd/yyyy";
 
 const normalizeSelectedFilterOption = (selectedFilterOption: DateFilterOption): DateFilterOption => {
     if (

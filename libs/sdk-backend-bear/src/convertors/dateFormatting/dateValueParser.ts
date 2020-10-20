@@ -1,9 +1,7 @@
 // (C) 2020 GoodData Corporation
 import parse from "date-fns/parse";
 import { UnexpectedError } from "@gooddata/sdk-backend-spi";
-
-export const dateFormats = ["MM/dd/yyyy", "dd/MM/yyyy", "dd-MM-yyyy", "yyyy-MM-dd", "M/d/yy", "dd.MM.yyyy"];
-export const DEFAULT_DATE_FORMAT = "MM/dd/yyyy";
+import { dateFormats, DEFAULT_DATE_FORMAT } from "@gooddata/sdk-model";
 
 /**
  * Parses a string representation of a date of a given date format to a Date object.

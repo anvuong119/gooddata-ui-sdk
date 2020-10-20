@@ -1,4 +1,5 @@
 // (C) 2019-2020 GoodData Corporation
+export { dateFormats, DEFAULT_DATE_FORMAT } from "./base/dateFormats";
 export { DateAttributeGranularity, DateGranularity, AllTimeGranularity } from "./base/dateGranularities";
 
 export {

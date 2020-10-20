@@ -1,5 +1,5 @@
 // (C) 2019-2020 GoodData Corporation
-import { DEFAULT_DATE_FORMAT } from "../../../DateFilter";
+import { DEFAULT_DATE_FORMAT } from "@gooddata/sdk-model";
 import {
     getDateFilterRepresentation,
     getDateFilterTitleUsingTranslator,

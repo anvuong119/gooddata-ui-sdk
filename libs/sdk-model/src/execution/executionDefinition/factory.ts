@@ -159,8 +159,11 @@ export function defWithSorting(definition: IExecutionDefinition, sorts: ISortIte
 /**
  * Changes dateFormat in the definition.
  *
+ * This function MUST be used to implement IPreparedExecution.withDateFormat();
+ *
  * @param definition - execution definition to alter
  * @param dateFormat - the date format to apply
+ * @returns new execution with the specified date format
  * @public
  */
 export function defWithDateFormat(

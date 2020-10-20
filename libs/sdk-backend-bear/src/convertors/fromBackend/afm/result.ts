@@ -4,7 +4,7 @@ import { GdcExecution } from "@gooddata/api-model-bear";
 import { DateFormatter } from "../../dateFormatting/types";
 import { createDateValueFormatter } from "../../dateFormatting/dateValueFormatter";
 
-export type TransformerResult = {
+export type TransformedResult = {
     readonly headerItems: GdcExecution.IResultHeaderItem[][][];
     readonly data: DataValue[][] | DataValue[];
     readonly total: number[];
@@ -46,7 +46,7 @@ export function transformHeaderItems(
 export function transformExecutionResult(
     result: GdcExecution.IExecutionResult,
     dateFormatter: DateFormatter,
-): TransformerResult {
+): TransformedResult {
     return {
         data: result.data,
         headerItems: transformHeaderItems(dateFormatter, result.headerItems),

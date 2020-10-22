@@ -7,7 +7,7 @@ import { ScenarioAndDescription } from "../../../src";
 import { createInsightDefinitionForChart } from "../../_infra/insightFactory";
 import { mountChartAndCapture } from "../../_infra/render";
 import { mountInsight } from "../../_infra/renderPlugVis";
-import { cleanupCoreChartProps } from "../../_infra/utils";
+// import { cleanupCoreChartProps } from "../../_infra/utils";
 import flatMap from "lodash/flatMap";
 
 const Chart = "AreaChart";
@@ -22,19 +22,19 @@ describe(Chart, () => {
             return wrapper.find("CoreAreaChart").props();
         });
 
-        it("should create expected execution definition", async () => {
-            const interactions = await promisedInteractions;
+        // it("should create expected execution definition", async () => {
+        //     const interactions = await promisedInteractions;
 
-            expect(interactions.triggeredExecution).toMatchSnapshot();
-        });
+        //     expect(interactions.triggeredExecution).toMatchSnapshot();
+        // });
 
-        it("should create expected props for core chart", async () => {
-            const interactions = await promisedInteractions;
+        // it("should create expected props for core chart", async () => {
+        //     const interactions = await promisedInteractions;
 
-            expect(interactions.effectiveProps).toBeDefined();
-            expect(interactions.effectiveProps!.execution).toBeDefined();
-            expect(cleanupCoreChartProps(interactions.effectiveProps)).toMatchSnapshot();
-        });
+        //     expect(interactions.effectiveProps).toBeDefined();
+        //     expect(interactions.effectiveProps!.execution).toBeDefined();
+        //     expect(cleanupCoreChartProps(interactions.effectiveProps)).toMatchSnapshot();
+        // });
 
         it("should lead to same execution when rendered as insight via plug viz", async () => {
             const interactions = await promisedInteractions;

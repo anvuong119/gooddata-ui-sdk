@@ -23,6 +23,7 @@ import { convertExecutionApiError } from "../../../utils/errorHandling";
 import { toAfmExecution } from "../../../convertors/toBackend/afm/ExecutionConverter";
 import { convertWarning, convertDimensions } from "../../../convertors/fromBackend/ExecutionResultConverter";
 import { transformResultHeader } from "../../../convertors/fromBackend/afm/result";
+import { dimensionHeaders } from "../../../convertors/fromBackend/tests/AfmResultConverter.fixtures";
 
 export class BearExecutionResult implements IExecutionResult {
     public readonly dimensions: IDimensionDescriptor[];
@@ -167,6 +168,34 @@ class BearDataView implements IDataView {
             transformResultHeader,
             this.definition.postProcessing,
         );
+
+        for (let i = 0; i < 5000; i += 1) {
+            dimensionHeaders.push(dimensionHeaders[0]);
+            dimensionHeaders.push(dimensionHeaders[1]);
+        }
+        const dimensionHeadersNum = dimensionHeaders.length;
+        const startTime = new Date();
+        const startTimeAsUnixtime = startTime.getTime();
+        console.log("Before transforming", {
+            startTime,
+            startTimeAsUnixtime,
+            dimensionHeadersNum,
+        });
+        const transformedHeaders = transformResultHeaders(
+            dimensionHeaders,
+            transformResultHeader,
+            this.definition.postProcessing,
+        );
+        const endTime = new Date();
+        const endTimeAsUnixtime = endTime.getTime();
+        console.log("After transforming", {
+            endTime,
+            endTimeAsUnixtime,
+            timeElapsedInSec: (endTimeAsUnixtime - startTimeAsUnixtime) / 1000,
+            dimensionHeadersNum,
+            dimensionHeaders,
+            transformedHeaders,
+        });
     }
 
     public fingerprint(): string {

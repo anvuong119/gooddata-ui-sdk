@@ -38,7 +38,7 @@ module.exports = async (env, argv) => {
     const backendParam = (env && env.backend) || "public";
 
     const basePath = (env && env.basePath) || ""; // eslint-disable-line no-mixed-operators
-    const backendUrl = backendShortcuts[backendParam] || backendParam;
+    const backendUrl = backendShortcuts.stg3; //backendShortcuts[backendParam] || backendParam;
     console.log("Backend URI: ", backendUrl); // eslint-disable-line no-console
 
     const isProduction = argv.mode === "production";

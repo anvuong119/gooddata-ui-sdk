@@ -3,25 +3,9 @@
 import React from "react";
 import { ExampleWithSource } from "../../../components/ExampleWithSource";
 
-import { DatePickerExample_MMDDYYYY } from "./DatePickerExample_MMDDYYYY";
-import DatePickerExample_MMDDYYYYSRC from "!raw-loader!./DatePickerExample_MMDDYYYY";
-import DatePickerExample_MMDDYYYYSRCJS from "!raw-loader!../../../../examplesJS/internationalDateFormat/datePicker/DatePickerExample_MMDDYYYY";
-
-import { DatePickerExample_DDMMYYYY_Dash } from "./DatePickerExample_DDMMYYYY_Dash";
-import DatePickerExample_DDMMYYYY_DashSRC from "!raw-loader!./DatePickerExample_DDMMYYYY_Dash";
-import DatePickerExample_DDMMYYYY_DashSRCJS from "!raw-loader!../../../../examplesJS/internationalDateFormat/datePicker/DatePickerExample_DDMMYYYY_Dash";
-
-import { DatePickerExample_DDMMYYYY_Dot } from "./DatePickerExample_DDMMYYYY_Dot";
-import DatePickerExample_DDMMYYYY_DotSRC from "!raw-loader!./DatePickerExample_DDMMYYYY_Dot";
-import DatePickerExample_DDMMYYYY_DotSRCJS from "!raw-loader!../../../../examplesJS/internationalDateFormat/datePicker/DatePickerExample_DDMMYYYY_Dot";
-
-import { DatePickerExample_DDMMYYYY_Slash } from "./DatePickerExample_DDMMYYYY_Slash";
-import DatePickerExample_DDMMYYYY_SlashSRC from "!raw-loader!./DatePickerExample_DDMMYYYY_Slash";
-import DatePickerExample_DDMMYYYY_SlashSRCJS from "!raw-loader!../../../../examplesJS/internationalDateFormat/datePicker/DatePickerExample_DDMMYYYY_Slash";
-
-import { DatePickerExample_YYYYMMDD } from "./DatePickerExample_YYYYMMDD";
-import DatePickerExample_YYYYMMDDSRC from "!raw-loader!./DatePickerExample_YYYYMMDD";
-import DatePickerExample_YYYYMMDDSRCJS from "!raw-loader!../../../../examplesJS/internationalDateFormat/datePicker/DatePickerExample_YYYYMMDD";
+import { DatePickerExample_DDMMYYYY } from "./DatePickerExample_DDMMYYYY";
+import DatePickerExample_DDMMYYYYSRC from "!raw-loader!./DatePickerExample_DDMMYYYY";
+import DatePickerExample_DDMMYYYYSRCJS from "!raw-loader!../../../../examplesJS/internationalDateFormat/datePicker/DatePickerExample_DDMMYYYY";
 
 import { DatePickerExample_MDYY } from "./DatePickerExample_MDYY";
 import DatePickerExample_MDYYSRC from "!raw-loader!./DatePickerExample_MDYY";
@@ -31,38 +15,11 @@ export const InternationalDatePickerExample: React.FC = () => (
     <div>
         <h1>Date Picker</h1>
 
-        <p>
-            This is an example of two custom date picker components filtering a insightView by absolute date
-            in MM/dd/yyyy format.
-        </p>
-
-        <ExampleWithSource
-            for={DatePickerExample_MMDDYYYY}
-            source={DatePickerExample_MMDDYYYYSRC}
-            sourceJS={DatePickerExample_MMDDYYYYSRCJS}
-        />
-
-        <p>
-            This is an example of two custom date picker components filtering a insightView by absolute date
-            in dd-MM-yyyy format.
-        </p>
-
-        <ExampleWithSource
-            for={DatePickerExample_DDMMYYYY_Dash}
-            source={DatePickerExample_DDMMYYYY_DashSRC}
-            sourceJS={DatePickerExample_DDMMYYYY_DashSRCJS}
-        />
-
-        <p>
-            This is an example of two custom date picker components filtering a insightView by absolute date
-            in dd.MM.yyyy format.
-        </p>
-
-        <ExampleWithSource
-            for={DatePickerExample_DDMMYYYY_Dot}
-            source={DatePickerExample_DDMMYYYY_DotSRC}
-            sourceJS={DatePickerExample_DDMMYYYY_DotSRCJS}
-        />
+        <h3>
+            If a format (for more details about date formats, please see{" "}
+            <a href="https://date-fns.org/v2.0.0-alpha.27/docs/format">here</a>) is passed to Datepicker
+            components via dateFormat property, the dates will be displayed in that format
+        </h3>
 
         <p>
             This is an example of two custom date picker components filtering a insightView by absolute date
@@ -70,20 +27,9 @@ export const InternationalDatePickerExample: React.FC = () => (
         </p>
 
         <ExampleWithSource
-            for={DatePickerExample_DDMMYYYY_Slash}
-            source={DatePickerExample_DDMMYYYY_SlashSRC}
-            sourceJS={DatePickerExample_DDMMYYYY_SlashSRCJS}
-        />
-
-        <p>
-            This is an example of two custom date picker components filtering a insightView by absolute date
-            in yyyy-MM-dd format.
-        </p>
-
-        <ExampleWithSource
-            for={DatePickerExample_YYYYMMDD}
-            source={DatePickerExample_YYYYMMDDSRC}
-            sourceJS={DatePickerExample_YYYYMMDDSRCJS}
+            for={DatePickerExample_DDMMYYYY}
+            source={DatePickerExample_DDMMYYYYSRC}
+            sourceJS={DatePickerExample_DDMMYYYYSRCJS}
         />
 
         <p>

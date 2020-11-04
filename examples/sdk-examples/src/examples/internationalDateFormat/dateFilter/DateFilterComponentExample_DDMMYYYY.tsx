@@ -174,7 +174,7 @@ interface IDateFilterComponentExampleState {
     excludeCurrentPeriod: boolean;
 }
 
-export const DateFilterComponentExample_YYYYMMDD: React.FC = () => {
+export const DateFilterComponentExample_DDMMYYYY: React.FC = () => {
     const [state, setState] = useState<IDateFilterComponentExampleState>({
         selectedFilterOption: defaultDateFilterOptions.absoluteForm!,
         excludeCurrentPeriod: false,
@@ -194,9 +194,9 @@ export const DateFilterComponentExample_YYYYMMDD: React.FC = () => {
                 selectedFilterOption={state.selectedFilterOption}
                 filterOptions={defaultDateFilterOptions}
                 availableGranularities={availableGranularities}
-                customFilterName="Selected date in yyyy-MM-dd format"
+                customFilterName="Selected date in dd/MM/yyyy format"
                 dateFilterMode="active"
-                dateFormat="yyyy-MM-dd"
+                dateFormat="dd/MM/yyyy"
                 onApply={onApply}
             />
         </div>

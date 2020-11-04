@@ -16,7 +16,7 @@ export interface IDatePickerState {
     error: string | undefined;
 }
 
-export const DatePickerExample_DDMMYYYY_Dot: React.FC = () => {
+export const DatePickerExample_DDMMYYYY: React.FC = () => {
     const [state, setState] = useState<IDatePickerState>({
         from: moment("2017-01-01"),
         to: moment("2017-12-31"),
@@ -73,11 +73,11 @@ export const DatePickerExample_DDMMYYYY_Dot: React.FC = () => {
             `}</style>
             <label className="s-date-picker-from">
                 <h4>From</h4>
-                <Datepicker date={from.toDate()} onChange={onFromChange} dateFormat="dd.MM.yyyy" />
+                <Datepicker date={from.toDate()} onChange={onFromChange} dateFormat="dd/MM/yyyy" />
             </label>
             <label className="s-date-picker-to">
                 <h4>To</h4>
-                <Datepicker date={to.toDate()} onChange={onToChange} dateFormat="dd.MM.yyyy" />
+                <Datepicker date={to.toDate()} onChange={onToChange} dateFormat="dd/MM/yyyy" />
             </label>
             <hr className="separator" />
             <div style={{ height: 300 }} className="s-date-picker-chart">

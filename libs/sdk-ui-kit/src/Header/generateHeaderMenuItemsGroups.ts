@@ -13,6 +13,8 @@ export function generateHeaderMenuItemsGroups(
     dashboardId?: string,
     tabId?: string,
     hasNoDataSet?: boolean,
+    requiredPixelPerfectItems?: IHeaderMenuItem[],
+    requiredInsightItems?: IHeaderMenuItem[],
 ): IHeaderMenuItem[][] {
     if (!workspaceId) {
         return [];
@@ -37,7 +39,7 @@ export function generateHeaderMenuItemsGroups(
 
     // PIXEL PERFECT MENU ITEMS
     if (!shouldHidePixelPerfectExperience) {
-        const pixelPerfectItemsGroup = [];
+        const pixelPerfectItemsGroup = requiredPixelPerfectItems || [];
         const dashboardIdAndTabId = dashboardId && tabId ? `${dashboardId}|${tabId}` : "";
         const pixelPerfectDashboardsItem = {
             key: "gs.header.dashboards",
@@ -63,7 +65,7 @@ export function generateHeaderMenuItemsGroups(
     }
 
     // INSIGHTS MENU ITEMS
-    const insightItemsGroup = [];
+    const insightItemsGroup = requiredInsightItems || [];
 
     const loadCsvItem = {
         key: "gs.header.load",
